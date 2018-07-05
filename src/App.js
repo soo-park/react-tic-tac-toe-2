@@ -11,7 +11,7 @@ const cell = (length, rowState, i, onClickCell) => [...Array(length).keys()].map
       key={j}
       onClick={() => onClick(i, j)}
     >
-      {rowState[j]? "O" : "X"}
+      {rowState[j]? `[${rowState[j]}]` : '[ ]'}
     </span>
   )
 });
@@ -27,11 +27,11 @@ class App extends Component {
     super(props);
     this.state = {
       check: [
-        [false, false, false],
-        [false, false, false],
-        [false, false, false],
+        [null, null, null],
+        [null, null, null],
+        [null, null, null],
       ],
-      player: null,
+      player: "A",
       win: null,
     };
   }
@@ -41,8 +41,12 @@ class App extends Component {
       console.log(x, y, " already clicked");
     } else {
       const newCheck = this.state.check;
-      newCheck[x][y] = true;
-      this.setState({check: newCheck});
+      newCheck[x][y] = this.state.player === "A" ? "A" : "B";
+      const newPlayer = this.state.player === "A" ? "B" : "A";
+      this.setState({
+        check: newCheck,
+        player: newPlayer,
+      });
     }
   }
 
