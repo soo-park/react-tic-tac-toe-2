@@ -21,7 +21,7 @@ const row = (x, y, checkState, onClickCell) => {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    const defaultState = {
       check: [
         [null, null, null],
         [null, null, null],
@@ -30,6 +30,7 @@ class App extends Component {
       player: "A",
       win: null,
     };
+    this.state = defaultState;
   }
 
   onClickCell(x, y) {
@@ -50,10 +51,13 @@ class App extends Component {
 
   render() {
     const { win, player, check } = this.state;
+    const clickFunc = this.state.win === null ? this.onClickCell.bind(this) : () => console.log('game ended');
+    const banner = win === null ? `${player}'s Turn`: `${win} Won`;
+
     return (
       <div className="App">
-        { row(3, 3, check, this.onClickCell.bind(this)) }
-        <div>{ win !== 'null' ? `${player}'s Turn`: `${player} Won`}</div>
+        { row(3, 3, check, clickFunc) }
+        <div>{ banner }</div>
       </div>
     );
   }
