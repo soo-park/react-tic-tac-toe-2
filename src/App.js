@@ -27,7 +27,7 @@ class App extends Component {
     super(props);
     this.state = {
       check: [
-        [false, true, false],
+        [false, false, false],
         [false, false, false],
         [false, false, false],
       ],
@@ -37,13 +37,19 @@ class App extends Component {
   }
 
   onClickCell(x, y) {
-    console.log("clicked", x, y);
+    if (this.state.check[x][y]) {
+      console.log(x, y, " already clicked");
+    } else {
+      const newCheck = this.state.check;
+      newCheck[x][y] = true;
+      this.setState({check: newCheck});
+    }
   }
 
   render() {
     return (
       <div className="App">
-        { row(3, 3, this.state.check, this.onClickCell) }
+        { row(3, 3, this.state.check, this.onClickCell.bind(this)) }
       </div>
     );
   }
