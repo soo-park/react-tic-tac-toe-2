@@ -33,7 +33,7 @@
     width: 50vw;
     .row{
       @include grid();
-      color:grey;
+      color: auto;
       flex: 1;
       flex-direction: row;
       justify-content: center;
@@ -46,6 +46,10 @@
         flex-direction: column;
         text-align: center;
         font-size: 3rem;
+        font-weight: bolder;
+      }
+      .cell:hover {
+        background-color: grey;
       }
     }
   }

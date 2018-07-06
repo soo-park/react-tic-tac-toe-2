@@ -27,6 +27,7 @@ class App extends Component {
       ],
       player: "X",
       win: null,
+      click: 0,
     };
     this.state = defaultState;
   }
@@ -43,14 +44,24 @@ class App extends Component {
         check: newCheck,
         player: newPlayer,
         win: checkWinner(newCheck, x, y, player),
+        click: this.state.click + 1,
       });
     }
   }
 
   render() {
-    const { win, player, check } = this.state;
+    const { win, player, check, click } = this.state;
     const clickFunc = this.state.win === null ? this.onClickCell.bind(this) : () => console.log('game ended');
-    const banner = win === null ? `${player}'s Turn`: `${win} Won`;
+    let banner;
+    if (click === 0 && win === null) {
+      banner = "Game Start";
+    } else if (click === 9 && win === null) {
+      banner = "Game Over without a winner"
+    } else if (win !== null) {
+      banner = `${win} Won`;
+    } else {
+      banner = `${player}'s Turn`;
+    }
 
     return (
       <div className="App">
