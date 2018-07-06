@@ -21,6 +21,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        text-align: center; }
+        text-align: center;
+        font-size: 3rem; }
 
 /*# sourceMappingURL=App.css.map */

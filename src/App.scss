@@ -1,4 +1,4 @@
-// sass --watch ./src/App.scss to have it watched and updated
+// sass --watch ./src/App.scss  or  sass --watch src/:src/ to have it watched and updated
 @mixin flex {
   display: -webkit-box;
   display: -moz-box;
@@ -21,10 +21,8 @@
   }
 }
 
-
 .App {
   text-align: center;
-
   .board {
     @include grid();
     margin: 3rem auto;
@@ -33,14 +31,12 @@
     flex-direction: column;
     height: 50vw;
     width: 50vw;
-
     .row{
       @include grid();
       color:grey;
       flex: 1;
       flex-direction: row;
       justify-content: center;
-
       .cell {
         border: 2px solid black;
         width: 100%;
@@ -49,6 +45,7 @@
         justify-content: center;
         flex-direction: column;
         text-align: center;
+        font-size: 3rem;
       }
     }
   }

@@ -5,7 +5,7 @@ import { checkWinner } from './helper';
 const cell = (length, rowState, i, onClickCell) => [...Array(length).keys()].map((j) => {
   return (
     <div className="cell" id={j} key={j} onClick={() => onClickCell(i, j)}>
-      {rowState[j]? `[${rowState[j]}]` : '[ ]'}
+      {rowState[j] ? `${rowState[j]}` : ''}
     </div>
   )
 });
@@ -25,7 +25,7 @@ class App extends Component {
         [null, null, null],
         [null, null, null],
       ],
-      player: "A",
+      player: "X",
       win: null,
     };
     this.state = defaultState;
@@ -37,8 +37,8 @@ class App extends Component {
       console.log(x, y, " already clicked");
     } else {
       const newCheck = check;
-      newCheck[x][y] = player === "A" ? "A" : "B";
-      const newPlayer = player === "A" ? "B" : "A";
+      newCheck[x][y] = player === "X" ? "X" : "O";
+      const newPlayer = player === "X" ? "O" : "X";
       this.setState({
         check: newCheck,
         player: newPlayer,
