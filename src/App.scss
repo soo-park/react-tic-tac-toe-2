@@ -1,0 +1,55 @@
+// sass --watch ./src/App.scss to have it watched and updated
+@mixin flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin browser($values) { // $values... will make the values into the list
+  @each $var in $values {
+    display: #{$var};
+  }
+}
+
+@mixin grid($flex: true) {
+  @if $flex {
+    @include browser(flex); // using browser to set all displays pulled from flex
+  } @else {
+    display: block;
+  }
+}
+
+
+.App {
+  text-align: center;
+
+  .board {
+    @include grid();
+    margin: 3rem auto;
+    border-collapse: collapse;
+    box-sizing: content-box;
+    flex-direction: column;
+    height: 50vw;
+    width: 50vw;
+
+    .row{
+      @include grid();
+      color:grey;
+      flex: 1;
+      flex-direction: row;
+      justify-content: center;
+
+      .cell {
+        border: 2px solid black;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  }
+}

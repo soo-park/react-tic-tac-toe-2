@@ -4,19 +4,17 @@ import { checkWinner } from './helper';
 
 const cell = (length, rowState, i, onClickCell) => [...Array(length).keys()].map((j) => {
   return (
-    <span key={j} onClick={() => onClickCell(i, j)}>
+    <div className="cell" id={j} key={j} onClick={() => onClickCell(i, j)}>
       {rowState[j]? `[${rowState[j]}]` : '[ ]'}
-    </span>
+    </div>
   )
 });
 
-
 const row = (x, y, checkState, onClickCell) => {
-  return ([...Array(x).keys()].map((i) => <div id={i} key={i}> {
+  return ([...Array(x).keys()].map((i) => <div className="row" id={i} key={i}> {
     cell(y, checkState[i], i, onClickCell)} </div>)
   )
 };
-
 
 class App extends Component {
   constructor(props) {
@@ -56,8 +54,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        { row(3, 3, check, clickFunc) }
-        <div>{ banner }</div>
+        <div className="board">
+          { row(3, 3, check, clickFunc) }
+        </div>
+        <div className="banner">{ banner }</div>
       </div>
     );
   }
