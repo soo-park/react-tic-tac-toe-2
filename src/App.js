@@ -49,6 +49,20 @@ class App extends Component {
     }
   }
 
+  startNewGame() {
+    console.log(this.defaultState)
+    this.setState({
+      check: [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null],
+      ],
+      player: "X",
+      win: null,
+      click: 0,
+    })
+  }
+
   render() {
     const { win, player, check, click } = this.state;
     const clickFunc = this.state.win === null ? this.onClickCell.bind(this) : () => console.log('game ended');
@@ -69,6 +83,7 @@ class App extends Component {
           { row(3, 3, check, clickFunc) }
         </div>
         <div className="banner">{ banner }</div>
+        { this.state.win ? <button onClick={this.startNewGame.bind(this)}>Start New Game</button> : null }
       </div>
     );
   }
