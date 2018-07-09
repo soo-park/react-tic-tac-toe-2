@@ -38,7 +38,7 @@
       flex-direction: row;
       justify-content: center;
       .cell {
-        border: 2px solid black;
+        border: 2px solid grey;
         width: 100%;
         height: 100%;
         display: flex;
@@ -49,8 +49,17 @@
         font-weight: bolder;
       }
       .cell:hover {
-        background-color: grey;
+        background-color: lightgrey;
       }
     }
+  }
+  .banner {
+    margin: 1rem auto;
+  }
+  .newbtn {
+    background-color: lightgrey;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
   }
 }

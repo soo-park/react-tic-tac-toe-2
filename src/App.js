@@ -79,11 +79,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="board">
+        <div className="board" id={this.state.win}>
           { row(3, 3, check, clickFunc) }
         </div>
         <div className="banner">{ banner }</div>
-        { this.state.win ? <button onClick={this.startNewGame.bind(this)}>Start New Game</button> : null }
+        { this.state.win ? <button className="newbtn" onClick={this.startNewGame.bind(this)}>Start New Game</button> : null }
       </div>
     );
   }
